@@ -1,0 +1,44 @@
+<div class="w3-container" *ngIf="userAddForm">
+	<form class="w3-container" [formGroup]="userAddForm" (ngSubmit)="doRegister()">
+		<div class="w3-panel w3-round-small w3-teal">
+			<h3><span *ngIf="!userId">User Add</span><span *ngIf="userId">User
+					Update</span> <a routerLink="/list" class="w3-button w3-green custom-button"><i
+						class="w3-medium fa fa-chevron-left"></i> Back</a></h3>
+		</div>
+		<label class="w3-text-blue"><i class="w3-medium custom-icon fa fa-envelope-o"></i><b> Image</b></label>
+		<br>
+		<img [src]="userImage?imageUrl+ userImage:'assets/image/no-image.webp'" width="10%"
+			height="auto">
+		<input type="file" (change)="fileChange($event)">
+		<br>
+
+		<label class="w3-text-blue"><i class="w3-medium custom-icon fa fa-envelope-o"></i><b>First Name</b></label>
+		<input class="w3-input w3-border" type="text" formControlName="firstName">
+		<div class="w3-panel w3-red"
+			*ngIf="userAddForm.controls.firstName.invalid && (userAddForm.controls.firstName.dirty || userAddForm.controls.firstName.touched)">
+			Please enter 5 to 50 characters</div>
+
+		<label class="w3-text-blue"><i class="w3-medium custom-icon fa fa-envelope-o"></i><b>Last Name </b></label>
+		<input class="w3-input w3-border" type="text" formControlName="lastName">
+		<div class="w3-panel w3-red"
+			*ngIf="userAddForm.controls.lastName.invalid && (userAddForm.controls.lastName.dirty || userAddForm.controls.lastName.touched)">
+			Please enter 5 to 50 characters</div>
+
+		<label class="w3-text-blue"><i class="w3-medium custom-icon fa fa-envelope-o"></i><b>Email</b></label>
+		<input class="w3-input w3-border" type="email" formControlName="email">
+		<div class="w3-panel w3-red"  *ngIf="userAddForm.controls.email.invalid && (userAddForm.controls.email.dirty || userAddForm.controls.email.touched)">Please enter valid email address</div> 
+
+
+		<label class="w3-text-blue"><i class="w3-medium custom-icon fa fa-envelope-o"></i><b>Phone Number</b></label>
+		<input class="w3-input w3-border" type="text" formControlName="phoneNumber">
+		<div class="w3-panel w3-red"  *ngIf="userAddForm.controls.phoneNumber.invalid && (userAddForm.controls.phoneNumber.dirty || userAddForm.controls.phoneNumber.touched)">Please enter valid phone number</div> 
+
+
+
+		<br>
+		<button class="w3-btn w3-blue" type="submit" [disabled]="!userAddForm.valid"><span
+				*ngIf="!userId">Add</span><span *ngIf="userId">Update</span> <i class="w3-medium fa fa-check"></i>
+		</button>
+
+	</form>
+</div>

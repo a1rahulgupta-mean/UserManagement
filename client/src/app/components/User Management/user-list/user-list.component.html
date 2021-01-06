@@ -1,0 +1,34 @@
+<div class="w3-container" *ngIf="allUserList">
+	<div class="w3-panel w3-round-small w3-teal">
+		<h3>User List</h3>
+	</div>
+	<div class="w3-panel w3-green" *ngIf="allUserList.length === 0">
+		<h3>Oh no</h3>
+		<p>No User found  </p>
+	</div>
+	
+	<div class="w3-panel w3-light-grey w3-padding-16 w3-card-2" *ngIf="allUserList.length != 0">
+		<table class="w3-table w3-striped w3-bordered">
+			<tr>
+				<th><i class="w3-medium custom-icon"></i> First Name</th>
+				<th><i class="w3-medium custom-icon"></i> Last Name</th>
+				<th><i class="w3-medium custom-icon"></i> Phone Number</th>
+				<th><i class="w3-medium custom-icon"></i> Email</th>
+				<th><i class="w3-medium custom-icon"></i> Action</th>
+		
+				
+			</tr>
+			<tr *ngFor="let user of allUserList;">
+				<td class="pointer">{{user.firstName}} </td>
+				<td class="pointer">{{user.lastName}}</td>
+				<td class="pointer">{{user.phoneNumber }}</td>
+				<td class="pointer">{{user.email}}</td>
+				
+				<td><a [routerLink]="['update', user._id]"><i class="w3-medium custom-icon fa fa-pencil"></i></a>
+					<a [routerLink]="['detail', user._id]"><i class="w3-medium custom-icon fa fa-eye"></i></a>
+				<a (click)="deleteUser(user._id);"><i class="w3-medium custom-icon fa fa-trash"></i></a>
+			</tr>
+        </table>
+        <hr>
+	</div>
+</div>

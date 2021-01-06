@@ -1,0 +1,30 @@
+<div class="w3-container" *ngIf="userDetail">
+	<div class="w3-panel w3-round-small w3-teal">
+		<h3>User Details </h3>
+	</div>
+	<img [src]="userDetail.userImage ? imageUrl+ userDetail.userImage:'assets/image/no-image.webp'" width="10%"
+	height="auto">
+
+	<div class=" w3-card custom-card"><br>
+		<h3 class="text-center">{{userDetail.firstName}} {{userDetail.lastName}}</h3>
+		<hr>
+		<table class="w3-table w3-bordered">
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-user"></i>First Name</td>
+				<td>: <b>{{userDetail.firstName}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-user"></i>Last name</td>
+				<td>: <b>{{userDetail.lastName}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-envelope-o"></i> Email Address</td>
+				<td>: <b>{{userDetail.email}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-phone"></i> Phone</td>
+				<td>: <b>{{userDetail.phoneNumber}}</b></td>
+			</tr>
+		</table>
+	</div>
+</div>
